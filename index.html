@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selvin Rojas | Software Engineer</title>
+    <title>Selvin Rojas | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -19,11 +19,7 @@
             --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg);
@@ -39,23 +35,18 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideInRight {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
-        }
-
         .reveal {
             animation: fadeInUp 0.8s var(--transition) forwards;
             opacity: 0;
         }
 
-        /* --- Header / Ticker --- */
+        /* --- Global Ticker --- */
         .ticker {
             background: #111;
             color: #fff;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            padding: 8px 0;
+            padding: 10px 0;
             overflow: hidden;
             white-space: nowrap;
             position: sticky;
@@ -65,7 +56,7 @@
 
         .ticker-content {
             display: inline-block;
-            animation: tickerMove 20s linear infinite;
+            animation: tickerMove 30s linear infinite;
         }
 
         @keyframes tickerMove {
@@ -79,27 +70,26 @@
             margin: 0 auto;
             padding: 80px 24px;
             display: grid;
-            grid-template-columns: 1fr 340px;
+            grid-template-columns: 1fr 360px;
             gap: 60px;
         }
 
-        /* --- Profile Section --- */
+        /* --- Content Styling --- */
         .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(2.5rem, 8vw, 4.2rem);
             font-weight: 800;
             letter-spacing: -0.04em;
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 20px;
         }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
             margin-bottom: 40px;
+            max-width: 700px;
         }
 
-        /* --- Cards & Grid --- */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -111,102 +101,59 @@
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
             border-color: var(--accent);
         }
 
         .section-tag {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
             color: var(--accent);
             background: var(--accent-soft);
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 100px;
             display: inline-block;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 40px;
+        .list-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
         }
 
-        .stat-box {
-            padding: 20px;
-            border-radius: 16px;
-            background: #fcfcfd;
-            border: 1px solid var(--border);
+        .list-item:last-child { border-bottom: none; }
+
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
         }
 
-        .stat-num {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
+        .list-title { font-weight: 700; font-size: 1.1rem; }
+        .list-meta { font-size: 0.9rem; color: var(--text-secondary); }
 
-        .stat-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* --- Profile Image --- */
+        /* --- Sidebar & Visuals --- */
         .profile-img-wrap {
             width: 100%;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
-            aspect-ratio: 1;
+            aspect-ratio: 1/1.2;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: #e2e8f0;
         }
 
-        .profile-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
+        .profile-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
 
-        .profile-img-wrap:hover img {
-            transform: scale(1.05);
-        }
-
-        /* --- Buttons --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 14px 28px;
-            background: var(--text-main);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            background: var(--accent);
-            transform: scale(1.02);
-        }
-
-        /* --- Tech Stack Pills --- */
-        .pill-box {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
+        .pill-box { display: flex; flex-wrap: wrap; gap: 8px; }
         .pill {
             padding: 6px 14px;
-            background: #fff;
+            background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 13px;
+            border-radius: 10px;
+            font-size: 12px;
             font-weight: 500;
         }
 
@@ -220,7 +167,7 @@
 
     <div class="ticker">
         <div class="ticker-content">
-            SELVIN ROJAS // SOFTWARE ENGINEER // FULL STACK // PYTHON // .NET // SQL // REACT // SYSTEMS ARCHITECT // NEW JERSEY // SELVIN ROJAS // SOFTWARE ENGINEER // FULL STACK // PYTHON // .NET // SQL // REACT // SYSTEMS ARCHITECT // NEW JERSEY //
+            SELVIN ROJAS // RUTGERS FINANCE // COMPUTER SCIENCE // NOCTI CERTIFIED // BILINGUAL // JAVA & PYTHON // LEADERSHIP // COLLABORATIVE PROBLEM SOLVING // SELVIN ROJAS // RUTGERS FINANCE // COMPUTER SCIENCE // NOCTI CERTIFIED // BILINGUAL //
         </div>
     </div>
 
@@ -228,86 +175,106 @@
         <main>
             <section class="hero reveal" style="animation-delay: 0.1s;">
                 <h1>Selvin Rojas</h1>
-                <p>Building high-performance software solutions and automated systems with surgical precision.</p>
-                <a href="https://www.linkedin.com/in/selvin-rojas-59852727a" target="_blank" class="btn">Connect on LinkedIn</a>
+                <p>Finance student at Rutgers University with a background in Computer Science, bridging technical engineering with quantitative financial strategy.</p>
             </section>
 
-            <div class="card reveal" style="animation-delay: 0.3s;">
-                <span class="section-tag">Experience</span>
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Full Stack Development</h3>
-                <p style="color: var(--text-secondary);">Expertise in developing end-to-end applications, focusing on scalable backend architectures and intuitive user interfaces. Passionate about clean code and performance optimization.</p>
+            <div class="card reveal" style="animation-delay: 0.2s;">
+                <span class="section-tag">Professional Experience</span>
                 
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <span class="stat-num">~5ms</span>
-                        <span class="stat-label">Latency</span>
+                <div class="list-item">
+                    <div class="list-header">
+                        <div class="list-title">Lead Light Engineer & Technical Staff</div>
+                        <div class="list-meta">2021 – 2024</div>
                     </div>
-                    <div class="stat-box">
-                        <span class="stat-num">100%</span>
-                        <span class="stat-label">Uptime</span>
+                    <div style="font-size: 0.9rem; margin-bottom: 10px; color: var(--accent);">AC3 Professional Rental Entertainment</div>
+                    <ul style="font-size: 0.9rem; color: var(--text-secondary); margin-left: 20px;">
+                        <li>Streamlined light fixture setup via efficient automated sequences[cite: 36].</li>
+                        <li>Accelerated performance set assembly by directing staff to exceed customer expectations[cite: 35].</li>
+                        <li>Ensured system availability by providing one-on-one software training to all staff[cite: 37].</li>
+                    </ul>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-header">
+                        <div class="list-title">Counter & Driver</div>
+                        <div class="list-meta">2023 – Present</div>
                     </div>
-                    <div class="stat-box">
-                        <span class="stat-num">99.9%</span>
-                        <span class="stat-label">Stability</span>
-                    </div>
+                    <div style="font-size: 0.9rem; margin-bottom: 10px; color: var(--accent);">Maurizio's Pizzeria and Italian Grill</div>
+                    <ul style="font-size: 0.9rem; color: var(--text-secondary); margin-left: 20px;">
+                        <li>Manage 400+ daily orders with 95% accuracy[cite: 23].</li>
+                        <li>Optimized ordering process to drop food costs by improving customer-kitchen communication[cite: 28].</li>
+                        <li>Manage high-stress lunch routing to ensure deliveries within allotted timeframes[cite: 25].</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="card reveal" style="animation-delay: 0.5s;">
-                <span class="section-tag">Featured Projects</span>
-                <div style="display: grid; gap: 30px;">
-                    <div>
-                        <h4 style="font-size: 1.2rem;">Algorithmic Trading Engine</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">High-frequency data processing and quantitative strategy execution using Python and real-time APIs.</p>
+            <div class="card reveal" style="animation-delay: 0.3s;">
+                <span class="section-tag">Education</span>
+                
+                <div class="list-item">
+                    <div class="list-header">
+                        <div class="list-title">Rutgers Business School</div>
+                        <div class="list-meta">Exp. May 2027</div>
                     </div>
-                    <div style="border-top: 1px solid var(--border); padding-top: 20px;">
-                        <h4 style="font-size: 1.2rem;">Encrypted Data Infrastructure</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Secure information systems utilizing modern encryption protocols for sensitive financial data.</p>
+                    <div style="font-size: 0.9rem; color: var(--text-secondary);">Bachelor of Science, Finance [cite: 5]</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 5px;">Member: Scholars of Finance, Personal Finance Club [cite: 7]</div>
+                </div>
+
+                <div class="list-item" style="border: none; padding: 0;">
+                    <div class="list-header">
+                        <div class="list-title">Atlantic County Institute of Technology</div>
+                        <div class="list-meta">Jun 2023</div>
                     </div>
+                    <div style="font-size: 0.9rem; color: var(--text-secondary);">High School Diploma, Computer Science [cite: 9]</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 5px;">Collaboration: Remote-controlled bioluminescent fireworks[cite: 12].</div>
                 </div>
             </div>
         </main>
 
-        <aside class="sidebar reveal" style="animation-delay: 0.2s;">
-            <div class="profile-img-wrap">
+        <aside class="sidebar">
+            <div class="profile-img-wrap reveal" style="animation-delay: 0.1s;">
                 <img src="Assets/ProfilePic.jpg" alt="Selvin Rojas">
             </div>
 
-            <div class="card">
-                <span class="section-tag">Technical Stack</span>
+            <div class="card reveal" style="animation-delay: 0.2s;">
+                <span class="section-tag">Technical Skills</span>
                 <div class="pill-box">
-                    <span class="pill">Python</span>
-                    <span class="pill">C# / .NET</span>
-                    <span class="pill">SQL</span>
-                    <span class="pill">React</span>
-                    <span class="pill">TypeScript</span>
-                    <span class="pill">Docker</span>
-                    <span class="pill">Git</span>
-                    <span class="pill">REST APIs</span>
+                    <span class="pill">Intermediate Java [cite: 40]</span>
+                    <span class="pill">Intermediate Python [cite: 40]</span>
+                    <span class="pill">Excel (Advanced) [cite: 40]</span>
+                    <span class="pill">PowerPoint [cite: 40]</span>
+                    <span class="pill">Word [cite: 40]</span>
+                    <span class="pill">NOCTI CS Credential [cite: 42]</span>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card reveal" style="animation-delay: 0.3s;">
+                <span class="section-tag">Soft Skills</span>
+                <div class="pill-box">
+                    <span class="pill">Problem-solving [cite: 40]</span>
+                    <span class="pill">Leadership [cite: 40]</span>
+                    <span class="pill">Adaptability [cite: 41]</span>
+                    <span class="pill">Pressure Resilience [cite: 41]</span>
+                    <span class="pill">Conflict Management [cite: 41]</span>
+                </div>
+            </div>
+
+            <div class="card reveal" style="animation-delay: 0.4s;">
                 <span class="section-tag">Contact</span>
-                <p style="font-size: 0.9rem; font-weight: 600; margin-bottom: 15px;">New Jersey, USA</p>
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <a href="#" style="color: var(--text-main); text-decoration: none; font-size: 0.9rem;">Email Me →</a>
-                    <a href="#" style="color: var(--text-main); text-decoration: none; font-size: 0.9rem;">View GitHub →</a>
+                <div style="font-size: 0.9rem; line-height: 2;">
+                    <a href="https://www.linkedin.com/in/selvinrojas/" target="_blank" style="color: var(--text-main); text-decoration: none; display: block;">LinkedIn Profile →</a>
+                    <div style="color: var(--text-secondary);">selvin.rojas@rutgers.edu [cite: 2]</div>
+                    <div style="color: var(--text-secondary);">Piscataway, NJ [cite: 1]</div>
                 </div>
             </div>
         </aside>
     </div>
 
     <footer style="text-align: center; padding: 40px; color: var(--text-secondary); font-size: 0.8rem;">
-        © 2026 Selvin Rojas. All rights reserved.
+        © 2026 Selvin Rojas. All professional data verified via current academic records[cite: 5].
     </footer>
 
     <script>
-        // Simple scroll reveal observer
-        const observerOptions = {
-            threshold: 0.1
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -315,7 +282,7 @@
                     entry.target.style.transform = "translateY(0)";
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
