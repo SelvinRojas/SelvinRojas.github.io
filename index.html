@@ -3,349 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SELVIN_ROJAS // FULL_STACK_ENGINEER</title>
+    <title>SELVIN_ROJAS // SYSTEM_ARCHITECT</title>
     <style>
         :root {
-            --bg: #020204;
-            --surface: rgba(10, 10, 15, 0.7);
+            --bg: #030305;
+            --surface: rgba(12, 12, 18, 0.85);
             --accent: #00f3ff;
-            --accent-glow: rgba(0, 243, 255, 0.3);
-            --text-main: #ffffff;
-            --text-dim: #8a8a9b;
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-dim: rgba(0, 243, 255, 0.1);
+            --text-main: #f0f0f0;
+            --text-dim: #707080;
+            --border: rgba(255, 255, 255, 0.08);
             --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg);
             background-image: 
-                radial-gradient(circle at 20% 30%, #0d1a21 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, #0d0d16 0%, transparent 40%);
+                radial-gradient(circle at 10% 10%, #0d1a21 0%, transparent 30%),
+                radial-gradient(circle at 90% 90%, #110d16 0%, transparent 30%);
             color: var(--text-main);
             font-family: var(--font-mono);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION DATA BAR --- */
+        /* --- SLEEK DATA TOP BAR --- */
         .top-nav {
-            backdrop-filter: blur(12px);
-            background: rgba(0, 0, 0, 0.6);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 12px 40px;
+            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
-        .status-indicator {
+        .sys-status {
             font-size: 10px;
             color: var(--accent);
-            text-transform: uppercase;
             letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 8px var(--accent);
-            animation: pulse 2s infinite;
+            text-transform: uppercase;
         }
 
         /* --- LAYOUT --- */
-        .container {
-            max-width: 1200px;
-            margin: 80px auto;
+        .mainframe {
+            max-width: 1300px;
+            margin: 60px auto;
             display: grid;
-            grid-template-columns: 340px 1fr;
-            gap: 50px;
+            grid-template-columns: 350px 1fr;
+            gap: 40px;
             padding: 0 30px;
         }
 
-        /* --- BIOMETRIC SIDEBAR --- */
-        .sidebar-id {
+        /* --- BIOMETRIC ID SIDEBAR --- */
+        .sidebar {
             position: sticky;
-            top: 140px;
+            top: 120px;
+            height: fit-content;
         }
 
-        .id-card {
+        .bio-module {
             background: var(--surface);
-            backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--border);
             padding: 30px;
             position: relative;
-            overflow: hidden;
         }
 
-        .id-card::before {
+        .bio-module::before {
             content: "";
             position: absolute;
-            top: 0; left: 0; width: 40px; height: 40px;
+            top: -1px; left: -1px; width: 30px; height: 30px;
             border-top: 2px solid var(--accent);
             border-left: 2px solid var(--accent);
         }
 
-        .photo-module {
+        .profile-container {
             width: 100%;
             aspect-ratio: 1;
             background: #000;
             margin-bottom: 25px;
             position: relative;
-            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            border: 1px solid var(--border);
         }
 
-        .photo-module img {
+        .profile-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(0.5) brightness(1.1);
+            filter: grayscale(100%) contrast(1.1);
+            transition: 0.5s;
         }
 
-        .scan-bar {
+        .profile-container:hover img {
+            filter: grayscale(0%);
+        }
+
+        .biometric-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            pointer-events: none;
+            background: linear-gradient(0deg, rgba(0,243,255,0.05) 0%, transparent 100%);
+        }
+
+        .scan-line {
             width: 100%;
-            height: 3px;
+            height: 2px;
             background: var(--accent);
             position: absolute;
             top: 0;
-            box-shadow: 0 0 20px var(--accent);
-            animation: scanMove 3s ease-in-out infinite;
-            z-index: 5;
+            box-shadow: 0 0 15px var(--accent);
+            animation: scan 3s ease-in-out infinite;
         }
 
-        /* --- TYPOGRAPHY & CARDS --- */
-        h1 {
-            font-size: 3rem;
-            letter-spacing: -2px;
-            margin-bottom: 10px;
-            background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .role-tag {
-            color: var(--accent);
-            font-size: 13px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 50px;
-            display: block;
-        }
-
-        .content-card {
-            background: var(--surface);
-            border: 1px solid var(--glass-border);
-            padding: 35px;
-            margin-bottom: 30px;
-            transition: 0.4s cubic-bezier(0.2, 0, 0.2, 1);
-        }
-
-        .content-card:hover {
-            border-color: rgba(0, 243, 255, 0.4);
-            transform: scale(1.01);
-            background: rgba(15, 15, 25, 0.8);
-        }
-
-        .section-header {
-            font-size: 11px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-header::after {
-            content: "";
-            height: 1px;
-            flex-grow: 1;
-            background: var(--glass-border);
-            margin-left: 20px;
-        }
-
-        /* --- STATS GRID --- */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .stat-node {
-            background: rgba(255,255,255,0.02);
-            padding: 20px;
-            border-left: 1px solid var(--accent);
-        }
-
-        .stat-node span {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .stat-node label {
-            font-size: 9px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-        }
-
-        /* --- INTERACTIVE --- */
-        .tech-pill {
-            display: inline-block;
-            padding: 4px 12px;
-            font-size: 11px;
-            background: rgba(0, 243, 255, 0.05);
-            border: 1px solid rgba(0, 243, 255, 0.1);
-            color: var(--accent);
-            margin: 0 8px 8px 0;
-        }
-
-        .uplink-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            text-align: center;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 12px;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-
-        .uplink-btn:hover {
-            background: var(--accent);
-            color: var(--bg);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        @keyframes scanMove {
+        @keyframes scan {
             0%, 100% { top: 0%; }
             50% { top: 100%; }
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
-        }
-
-        @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; }
-            .sidebar-id { position: static; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav class="top-nav">
-        <div class="status-indicator">
-            <div class="status-dot"></div>
-            System_Live // User: S_ROJAS
-        </div>
-        <div style="font-size: 10px; color: var(--text-dim);">
-            NODE: NEW_JERSEY_01
-        </div>
-    </nav>
-
-    <div class="container">
-        <aside class="sidebar-id">
-            <div class="id-card">
-                <div class="photo-module">
-                    <div class="scan-bar"></div>
-                    <img src="Assets/ProfilePic.jpg" alt="Selvin Rojas">
-                </div>
-                <div class="section-header">Operator_Info</div>
-                <h2 style="font-size: 1.2rem; margin-bottom: 5px;">SELVIN ROJAS</h2>
-                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 25px;">Level 4 Software Engineer</p>
-                
-                <div class="section-header">Establish_Uplink</div>
-                <a href="https://www.linkedin.com/in/selvin-rojas-59852727a" class="uplink-btn">LINKEDIN_PROFILE</a>
-                <a href="#" class="uplink-btn" style="border-color: var(--glass-border); color: #fff;">GITHUB_ARCHIVE</a>
-            </div>
-        </aside>
-
-        <main>
-            <header>
-                <div class="section-header">Terminal_Header</div>
-                <h1>SYSTEMS_ARCHITECT</h1>
-                <span class="role-tag">Full-Stack Development & Automation</span>
-            </header>
-
-            <div class="grid-3">
-                <div class="stat-node">
-                    <span>Python</span>
-                    <label>Primary_Engine</label>
-                </div>
-                <div class="stat-node">
-                    <span>SQL</span>
-                    <label>Data_Protocol</label>
-                </div>
-                <div class="stat-node">
-                    <span>API</span>
-                    <label>Cloud_Uplink</label>
-                </div>
-            </div>
-
-            <div class="section-header">Operational_Bio</div>
-            <section class="content-card">
-                <p style="color: var(--text-dim); font-size: 15px;">
-                    Software Engineer focused on building robust, scalable digital infrastructure. Expertise in Python-driven backend services, database optimization, and modern front-end architectures. Committed to high-integrity code and efficient system design.
-                </p>
-            </section>
-
-            <div class="section-header">Active_Nodes</div>
-            
-            <div class="content-card">
-                <h3 style="color: var(--accent); margin-bottom: 10px;">CORE_AUTOMATION_ENGINE</h3>
-                <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 20px;">
-                    Developed custom Python scripts to streamline data processing workflows, reducing manual operational latency by 40%.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-pill">PYTHON</span>
-                    <span class="tech-pill">PANDAS</span>
-                    <span class="tech-pill">OS_LIB</span>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <h3 style="color: var(--accent); margin-bottom: 10px;">RELATIONAL_DATABASE_VAULT</h3>
-                <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 20px;">
-                    Architecture and management of complex SQL databases, ensuring data consistency and sub-second query performance for financial reporting.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-pill">POSTGRES</span>
-                    <span class="tech-pill">SQL_SERVER</span>
-                    <span class="tech-pill">DOCKER</span>
-                </div>
-            </div>
-
-            <div class="content-card" style="border-style: dashed; opacity: 0.7;">
-                <h3 style="color: var(--text-dim);">UPCOMING_PROJECT_03</h3>
-                <p style="font-size: 12px;">Initializing machine learning integration modules... [ACCESS_PENDING]</p>
-            </div>
-        </main>
-    </div>
-
-    <footer style="padding: 60px 0; text-align: center; border-top: 1px solid var(--glass-border);">
-        <div style="font-size: 9px; color: var(--text-dim); letter-spacing: 5px;">
-            SECURE_PORTFOLIO_V2.0 // © 2024 SELVIN_ROJAS
-        </div>
-    </footer>
-
-</body>
-</html>
