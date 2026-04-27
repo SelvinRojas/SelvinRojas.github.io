@@ -3,288 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selvin Rojas | Portfolio</title>
+    <title>S_ROJAS // FINANCIAL_SYSTEMS_ANALYST</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-main: #1a1a1a;
-            --text-secondary: #666666;
-            --accent: #2563eb;
-            --accent-soft: #eff6ff;
-            --border: #e5e7eb;
-            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            --bg: #0a0a0c;
+            --surface: #141417;
+            --surface-bright: #1c1c21;
+            --accent: #00e5ff;
+            --accent-dim: rgba(0, 229, 255, 0.15);
+            --text: #e2e2e7;
+            --text-dim: #71717a;
+            --border: #27272a;
+            --success: #22c55e;
+            --mono: 'JetBrains Mono', monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg);
-            color: var(--text-main);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        /* --- Animations --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            animation: fadeInUp 0.8s var(--transition) forwards;
-            opacity: 0;
-        }
-
-        /* --- Global Ticker --- */
-        .ticker {
-            background: #111;
-            color: #fff;
-            font-family: 'JetBrains Mono', monospace;
+        /* --- TRADING FLOOR TICKERS --- */
+        .ticker-bar {
+            background: #000;
+            border-bottom: 1px solid var(--border);
+            height: 32px;
+            display: flex;
+            align-items: center;
+            font-family: var(--mono);
             font-size: 11px;
-            padding: 10px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            position: sticky;
+            text-transform: uppercase;
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
-        .ticker-content {
-            display: inline-block;
-            animation: tickerMove 30s linear infinite;
+        .ticker-scroll {
+            white-space: nowrap;
+            animation: scroll 40s linear infinite;
         }
 
-        @keyframes tickerMove {
+        @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* --- Layout --- */
-        .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 24px;
+        .ticker-item { display: inline-block; margin-right: 40px; }
+        .ticker-item span { color: var(--accent); }
+
+        /* --- MAIN DASHBOARD LAYOUT --- */
+        .dashboard {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 20px;
             display: grid;
-            grid-template-columns: 1fr 360px;
-            gap: 60px;
+            grid-template-columns: 360px 1fr 300px;
+            gap: 20px;
         }
 
-        /* --- Content Styling --- */
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4.2rem);
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 700px;
-        }
-
-        .card {
-            background: var(--card-bg);
+        /* --- REUSABLE TERMINAL CARDS --- */
+        .terminal-card {
+            background: var(--surface);
             border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: 24px;
-            transition: var(--transition);
-            margin-bottom: 30px;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-            border-color: var(--accent);
-        }
-
-        .section-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--accent);
-            background: var(--accent-soft);
-            padding: 5px 14px;
-            border-radius: 100px;
-            display: inline-block;
+            position: relative;
             margin-bottom: 20px;
+            transition: all 0.2s ease;
         }
 
-        .list-item {
-            margin-bottom: 30px;
+        .terminal-card:hover { border-color: var(--accent); }
+
+        .card-header {
+            background: var(--surface-bright);
+            padding: 8px 15px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-        }
-
-        .list-item:last-child { border-bottom: none; }
-
-        .list-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
+            align-items: center;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: var(--text-dim);
         }
 
-        .list-title { font-weight: 700; font-size: 1.1rem; }
-        .list-meta { font-size: 0.9rem; color: var(--text-secondary); }
+        .status-dot {
+            width: 6px; height: 6px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+            display: inline-block;
+            margin-right: 5px;
+        }
 
-        /* --- Sidebar & Visuals --- */
-        .profile-img-wrap {
+        .card-content { padding: 25px; }
+
+        /* --- SIDEBAR: OPERATOR ID --- */
+        .profile-container {
             width: 100%;
-            border-radius: 24px;
-            overflow: hidden;
-            aspect-ratio: 1/1.2;
-            margin-bottom: 30px;
-            background: #e2e8f0;
-        }
-
-        .profile-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-
-        .pill-box { display: flex; flex-wrap: wrap; gap: 8px; }
-        .pill {
-            padding: 6px 14px;
-            background: var(--bg);
+            aspect-ratio: 1;
+            background: #000;
+            margin-bottom: 20px;
             border: 1px solid var(--border);
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 500;
+            overflow: hidden;
+            position: relative;
         }
 
-        @media (max-width: 960px) {
-            .wrapper { grid-template-columns: 1fr; padding-top: 40px; }
-            .sidebar { order: -1; }
+        .profile-container img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: grayscale(1) contrast(1.2) brightness(0.8);
+        }
+
+        .id-label {
+            font-family: var(--mono);
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        /* --- CENTER: MAIN FEED --- */
+        .hero-banner {
+            background: linear-gradient(45deg, #141417, #1c1c21);
+            padding: 40px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .hero-banner h2 {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .metric-item {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .metric-val { font-family: var(--mono); font-size: 20px; color: var(--accent); font-weight: 700; }
+        .metric-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; }
+
+        /* --- EXPERIENCE ITEMS --- */
+        .exp-row { margin-bottom: 25px; }
+        .exp-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .exp-body { font-size: 13px; color: var(--text-dim); padding-left: 15px; border-left: 1px solid var(--border); }
+
+        /* --- RIGHT SIDEBAR: TECH STACK --- */
+        .stack-pill {
+            display: inline-block;
+            background: var(--accent-dim);
+            color: var(--accent);
+            padding: 4px 10px;
+            font-size: 11px;
+            font-family: var(--mono);
+            border: 1px solid var(--accent-dim);
+            margin: 0 5px 5px 0;
+        }
+
+        @media (max-width: 1100px) {
+            .dashboard { grid-template-columns: 1fr; margin-top: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="ticker">
-        <div class="ticker-content">
-            SELVIN ROJAS // RUTGERS FINANCE // COMPUTER SCIENCE // NOCTI CERTIFIED // BILINGUAL // JAVA & PYTHON // LEADERSHIP // COLLABORATIVE PROBLEM SOLVING // SELVIN ROJAS // RUTGERS FINANCE // COMPUTER SCIENCE // NOCTI CERTIFIED // BILINGUAL //
+    <div class="ticker-bar">
+        <div class="ticker-scroll">
+            <div class="ticker-item">SYS_STATUS: <span>OPERATIONAL</span></div>
+            <div class="ticker-item">JAVA_CORE: <span>v17.4</span></div>
+            <div class="ticker-item">PYTHON_LOAD: <span>STABLE</span></div>
+            <div class="ticker-item">LOC: <span>PISCATAWAY_NJ</span></div>
+            <div class="ticker-item">NET_LATENCY: <span>4MS</span></div>
+            <div class="ticker-item">FIN_MARKETS: <span>SYNCED</span></div>
+            <div class="ticker-item">SYS_STATUS: <span>OPERATIONAL</span></div>
+            <div class="ticker-item">JAVA_CORE: <span>v17.4</span></div>
+            <div class="ticker-item">PYTHON_LOAD: <span>STABLE</span></div>
         </div>
     </div>
 
-    <div class="wrapper">
-        <main>
-            <section class="hero reveal" style="animation-delay: 0.1s;">
-                <h1>Selvin Rojas</h1>
-                <p>Finance student at Rutgers University with a background in Computer Science, bridging technical engineering with quantitative financial strategy.</p>
-            </section>
-
-            <div class="card reveal" style="animation-delay: 0.2s;">
-                <span class="section-tag">Professional Experience</span>
-                
-                <div class="list-item">
-                    <div class="list-header">
-                        <div class="list-title">Lead Light Engineer & Technical Staff</div>
-                        <div class="list-meta">2021 – 2024</div>
-                    </div>
-                    <div style="font-size: 0.9rem; margin-bottom: 10px; color: var(--accent);">AC3 Professional Rental Entertainment</div>
-                    <ul style="font-size: 0.9rem; color: var(--text-secondary); margin-left: 20px;">
-                        <li>Streamlined light fixture setup via efficient automated sequences[cite: 36].</li>
-                        <li>Accelerated performance set assembly by directing staff to exceed customer expectations[cite: 35].</li>
-                        <li>Ensured system availability by providing one-on-one software training to all staff[cite: 37].</li>
-                    </ul>
+    <div class="dashboard">
+        
+        <aside>
+            <div class="terminal-card">
+                <div class="card-header">
+                    <span>ID_VERIFICATION</span>
+                    <span><div class="status-dot"></div>SECURE</span>
                 </div>
-
-                <div class="list-item">
-                    <div class="list-header">
-                        <div class="list-title">Counter & Driver</div>
-                        <div class="list-meta">2023 – Present</div>
+                <div class="card-content">
+                    <div class="profile-container">
+                        <img src="Assets/ProfilePic.jpg" alt="S. Rojas">
                     </div>
-                    <div style="font-size: 0.9rem; margin-bottom: 10px; color: var(--accent);">Maurizio's Pizzeria and Italian Grill</div>
-                    <ul style="font-size: 0.9rem; color: var(--text-secondary); margin-left: 20px;">
-                        <li>Manage 400+ daily orders with 95% accuracy[cite: 23].</li>
-                        <li>Optimized ordering process to drop food costs by improving customer-kitchen communication[cite: 28].</li>
-                        <li>Manage high-stress lunch routing to ensure deliveries within allotted timeframes[cite: 25].</li>
-                    </ul>
+                    <div class="id-label">SELVIN ROJAS</div>
+                    <p style="font-size: 12px; color: var(--text-dim); font-family: var(--mono); margin-bottom: 20px;">OPERATOR_598527 // FINANCIAL_SYS</p>
+                    
+                    <div class="section-divider" style="border-top: 1px solid var(--border); padding-top: 15px;">
+                        <span class="metric-label">Education_Node</span>
+                        <p style="font-size: 14px; margin-top: 5px;">Rutgers Business School</p>
+                        <p style="font-size: 12px; color: var(--text-dim);">B.S. Finance | Exp. May 2027</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="card reveal" style="animation-delay: 0.3s;">
-                <span class="section-tag">Education</span>
-                
-                <div class="list-item">
-                    <div class="list-header">
-                        <div class="list-title">Rutgers Business School</div>
-                        <div class="list-meta">Exp. May 2027</div>
-                    </div>
-                    <div style="font-size: 0.9rem; color: var(--text-secondary);">Bachelor of Science, Finance [cite: 5]</div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 5px;">Member: Scholars of Finance, Personal Finance Club [cite: 7]</div>
+            <div class="terminal-card">
+                <div class="card-header">CORE_CERTIFICATIONS</div>
+                <div class="card-content">
+                    <div class="stack-pill">NOCTI_COMPUTER_SCIENCE</div>
+                    <div class="stack-pill">BILINGUAL_NATIVE_ES</div>
                 </div>
+            </div>
+        </aside>
 
-                <div class="list-item" style="border: none; padding: 0;">
-                    <div class="list-header">
-                        <div class="list-title">Atlantic County Institute of Technology</div>
-                        <div class="list-meta">Jun 2023</div>
+        <main>
+            <section class="hero-banner">
+                <span class="metric-label" style="color: var(--accent);">// MISSION_PROFILE</span>
+                <h2>APPLICATION ARCHITECT & HEDGE ANALYST</h2>
+                <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 30px;">
+                    Bridging the gap between Computer Science and Financial Markets. Specialized in automated sequencing, routing optimization, and high-pressure system management.
+                </p>
+                
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-val">400+</div>
+                        <div class="metric-label">DAILY_OPERATIONS</div>
                     </div>
-                    <div style="font-size: 0.9rem; color: var(--text-secondary);">High School Diploma, Computer Science [cite: 9]</div>
-                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 5px;">Collaboration: Remote-controlled bioluminescent fireworks[cite: 12].</div>
+                    <div class="metric-item">
+                        <div class="metric-val">95%</div>
+                        <div class="metric-label">PRECISION_RATE</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-val">0ms</div>
+                        <div class="metric-label">LATENCY_GOAL</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="terminal-card">
+                <div class="card-header">PROFESSIONAL_OPERATIONS_LOG</div>
+                <div class="card-content">
+                    
+                    <div class="exp-row">
+                        <div class="exp-header">
+                            <span style="font-weight: 700;">Lead Light Engineer</span>
+                            <span style="font-family: var(--mono); font-size: 11px;">2021 — 2024</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--accent); margin-bottom: 10px;">AC3 RENTAL ENTERTAINMENT</div>
+                        <div class="exp-body">
+                            Architected automated light sequences to eliminate human operator error. Accelerated set-up cycles by optimizing equipment routing and staff coordination.
+                        </div>
+                    </div>
+
+                    <div class="exp-row">
+                        <div class="exp-header">
+                            <span style="font-weight: 700;">System Liaison / Driver</span>
+                            <span style="font-family: var(--mono); font-size: 11px;">2023 — PRESENT</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--accent); margin-bottom: 10px;">MAURIZIO'S PIZZERIA</div>
+                        <div class="exp-body">
+                            Managing high-density order flows (400+ daily). Optimized delivery routing under extreme traffic conditions to maintain strict timeframe SLAs.
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </main>
 
-        <aside class="sidebar">
-            <div class="profile-img-wrap reveal" style="animation-delay: 0.1s;">
-                <img src="Assets/ProfilePic.jpg" alt="Selvin Rojas">
-            </div>
+        <aside>
+            <div class="terminal-card">
+                <div class="card-header">TECHNICAL_STACK</div>
+                <div class="card-content">
+                    <span class="metric-label">Programming</span>
+                    <div style="margin: 10px 0 20px;">
+                        <div class="stack-pill">INTERMEDIATE_JAVA</div>
+                        <div class="stack-pill">INTERMEDIATE_PYTHON</div>
+                    </div>
 
-            <div class="card reveal" style="animation-delay: 0.2s;">
-                <span class="section-tag">Technical Skills</span>
-                <div class="pill-box">
-                    <span class="pill">Intermediate Java [cite: 40]</span>
-                    <span class="pill">Intermediate Python [cite: 40]</span>
-                    <span class="pill">Excel (Advanced) [cite: 40]</span>
-                    <span class="pill">PowerPoint [cite: 40]</span>
-                    <span class="pill">Word [cite: 40]</span>
-                    <span class="pill">NOCTI CS Credential [cite: 42]</span>
+                    <span class="metric-label">Financial_Analysis</span>
+                    <div style="margin: 10px 0;">
+                        <div class="stack-pill">EXCEL_MODELING</div>
+                        <div class="stack-pill">QUAN_RESEARCH</div>
+                        <div class="stack-pill">STRATEGY_DEV</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="card reveal" style="animation-delay: 0.3s;">
-                <span class="section-tag">Soft Skills</span>
-                <div class="pill-box">
-                    <span class="pill">Problem-solving [cite: 40]</span>
-                    <span class="pill">Leadership [cite: 40]</span>
-                    <span class="pill">Adaptability [cite: 41]</span>
-                    <span class="pill">Pressure Resilience [cite: 41]</span>
-                    <span class="pill">Conflict Management [cite: 41]</span>
+            <div class="terminal-card">
+                <div class="card-header">SECURE_UPLINKS</div>
+                <div class="card-content">
+                    <a href="https://www.linkedin.com/in/selvinrojas/" style="display: block; color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: 12px; margin-bottom: 10px;">> LINKEDIN_PROFILE</a>
+                    <a href="mailto:selvin.rojas@rutgers.edu" style="display: block; color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: 12px;">> DIRECT_TERMINAL_MAIL</a>
                 </div>
             </div>
 
-            <div class="card reveal" style="animation-delay: 0.4s;">
-                <span class="section-tag">Contact</span>
-                <div style="font-size: 0.9rem; line-height: 2;">
-                    <a href="https://www.linkedin.com/in/selvinrojas/" target="_blank" style="color: var(--text-main); text-decoration: none; display: block;">LinkedIn Profile →</a>
-                    <div style="color: var(--text-secondary);">selvin.rojas@rutgers.edu [cite: 2]</div>
-                    <div style="color: var(--text-secondary);">Piscataway, NJ [cite: 1]</div>
-                </div>
+            <div style="background: var(--accent); color: #000; padding: 15px; font-family: var(--mono); font-weight: 700; font-size: 12px; text-align: center;">
+                REQUEST_DOSSIER (CV)
             </div>
         </aside>
     </div>
 
-    <footer style="text-align: center; padding: 40px; color: var(--text-secondary); font-size: 0.8rem;">
-        © 2026 Selvin Rojas. All professional data verified via current academic records[cite: 5].
+    <footer style="border-top: 1px solid var(--border); padding: 20px; text-align: center; font-family: var(--mono); font-size: 10px; color: var(--text-dim);">
+        TERMINAL_NODE: RBS_FIN_DEPT // NO_UNAUTHORIZED_ACCESS // © 2026 S_ROJAS
     </footer>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
 </body>
 </html>
