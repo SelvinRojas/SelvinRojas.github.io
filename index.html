@@ -125,3 +125,216 @@
         @keyframes scan {
             0%, 100% { top: 0%; }
             50% { top: 100%; }
+        }
+
+        /* --- CONTENT CARDS --- */
+        .glass-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 243, 255, 0.3);
+            background: rgba(15, 15, 25, 0.9);
+        }
+
+        .label {
+            font-size: 10px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .desc {
+            color: var(--text-dim);
+            font-size: 15px;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        /* --- TECH STACK GRID --- */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-node {
+            padding: 12px;
+            background: var(--accent-dim);
+            border: 1px solid var(--border);
+            font-size: 12px;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        /* --- EXPERIENCE TIMELINE --- */
+        .exp-item {
+            border-left: 1px solid var(--accent);
+            padding-left: 25px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .exp-item::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 9px;
+            height: 9px;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .exp-title {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .exp-meta {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .uplink {
+            display: block;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+            margin-top: 10px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .uplink:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        @media (max-width: 900px) {
+            .mainframe { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="sys-status">// AUTH_KEY: SELVIN_ROJAS_0598 // STATUS: ACTIVE</div>
+        <div style="font-size: 10px; color: var(--text-dim);">LAST_SYNC: 2024.10.24</div>
+    </nav>
+
+    <div class="mainframe">
+        <aside class="sidebar">
+            <div class="bio-module">
+                <div class="profile-container">
+                    <div class="scan-line"></div>
+                    <div class="biometric-overlay"></div>
+                    <img src="Assets/ProfilePic.jpeg" alt="Selvin Rojas">
+                </div>
+                
+                <span class="label">Primary_Identity</span>
+                <h2 style="font-size: 22px; margin-bottom: 5px;">SELVIN ROJAS</h2>
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 30px;">FULL STACK DEVELOPER</p>
+                
+                <span class="label">Secure_Uplinks</span>
+                <a href="https://www.linkedin.com/in/selvin-rojas-59852727a" target="_blank" class="uplink">LinkedIn_Profile</a>
+                <a href="#" class="uplink" style="border-color: var(--border); color: #fff;">GitHub_Archive</a>
+                
+                <div style="margin-top: 30px; font-size: 10px; color: var(--text-dim);">
+                    LOC: New Jersey, US<br>
+                    LANG: English, Spanish
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <section class="glass-card" style="border-top: 4px solid var(--accent);">
+                <span class="label">Executive_Summary</span>
+                <h1>SYSTEMS_DEVELOPMENT</h1>
+                <p class="desc">
+                    Software Engineer specialized in architecting high-performance back-end systems and automation tools. Proficient in full-stack development with a core focus on Python, C#, and database optimization. Experienced in delivering end-to-end solutions that bridge the gap between complex data and user-centric interfaces.
+                </p>
+                
+                <span class="label">Core_Competencies</span>
+                <div class="skill-grid">
+                    <div class="skill-node">PYTHON</div>
+                    <div class="skill-node">C# / .NET</div>
+                    <div class="skill-node">SQL / POSTGRES</div>
+                    <div class="skill-node">REACT.JS</div>
+                    <div class="skill-node">REST_APIS</div>
+                    <div class="skill-node">AUTOMATION</div>
+                    <div class="skill-node">DOCKER</div>
+                    <div class="skill-node">GIT_FLOW</div>
+                </div>
+            </section>
+
+            <span class="label" style="margin-left: 20px;">Experience_Log</span>
+            <section class="glass-card">
+                <div class="exp-item">
+                    <h3 class="exp-title">Software Engineer</h3>
+                    <div class="exp-meta">Full-Stack Development // 2023 - Present</div>
+                    <p class="desc" style="font-size: 13px;">
+                        Engineering scalable web applications and internal automation suites. Focused on optimizing database queries and implementing secure RESTful architectures to support high-traffic data flows.
+                    </p>
+                </div>
+
+                <div class="exp-item">
+                    <h3 class="exp-title">Data Systems Analyst</h3>
+                    <div class="exp-meta">Operations & Automation // 2021 - 2023</div>
+                    <p class="desc" style="font-size: 13px;">
+                        Developed custom scripts to automate repetitive data entry and reporting tasks, resulting in a significant reduction in operational overhead. Managed SQL-based reporting servers for real-time business intelligence.
+                    </p>
+                </div>
+            </section>
+
+            <span class="label" style="margin-left: 20px;">Featured_Operations</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="glass-card" style="padding: 25px;">
+                    <h4 style="color: var(--accent);">AUTOSYNC_API</h4>
+                    <p style="font-size: 12px; color: var(--text-dim); margin-top: 10px;">
+                        A middleware service built in Python to synchronize legacy database records with modern cloud-based CRM systems.
+                    </p>
+                </div>
+                <div class="glass-card" style="padding: 25px;">
+                    <h4 style="color: var(--accent);">V_TASK_MANAGER</h4>
+                    <p style="font-size: 12px; color: var(--text-dim); margin-top: 10px;">
+                        C# based desktop utility for monitoring distributed server health and automated alert routing.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer style="text-align: center; padding: 60px; border-top: 1px solid var(--border);">
+        <div style="font-size: 10px; color: var(--text-dim); letter-spacing: 5px;">
+            // DESIGNED_FOR_FUTURE_SYSTEMS // © 2024 SELVIN_ROJAS
+        </div>
+    </footer>
+
+</body>
+</html>
