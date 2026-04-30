@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPA Quest: The ISC Chronicles</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div id="app-container">
+
+        <header id="status-bar">
+            <div class="logo">🏰 CPA Quest: ISC</div>
+            <div class="user-stats">
+                <span id="streak-tracker" title="Study Streak">🧪 <span id="streak-count">0</span> Days</span>
+                <span id="user-rank" title="Current Rank">🧝‍♂️ Workpaper Elf</span>
+            </div>
+        </header>
+
+        <main id="dashboard-view" class="view-section active">
+            <section class="welcome-banner">
+                <h1>Welcome back to the Realm of Audit!</h1>
+                <p>The PCAOB dragons are restless. Are your controls operating effectively?</p>
+                <button id="start-quest-btn" class="primary-btn">⚔️ Embark on a Mock Exam</button>
+            </section>
+
+            <div class="dashboard-grid">
+                <section class="dashboard-card" id="crystal-ball">
+                    <h2>🔮 The Crystal Ball (Mastery)</h2>
+                    <div class="progress-bar-container">
+                        <label>Area I: Info Systems & Data</label>
+                        <div class="progress-track"><div class="progress-fill" id="progress-area-1" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <label>Area II: Security & Privacy</label>
+                        <div class="progress-track"><div class="progress-fill" id="progress-area-2" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <label>Area III: SOC Engagements</label>
+                        <div class="progress-track"><div class="progress-fill" id="progress-area-3" style="width: 0%;"></div></div>
+                    </div>
+                </section>
+
+                <section class="dashboard-card" id="quest-log">
+                    <h2>🗺️ The Quest Log</h2>
+                    <ul id="history-list">
+                        <li class="empty-log">No quests completed yet. Enter the dungeon!</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+
+        <main id="quiz-view" class="view-section hidden">
+            <header class="quiz-header">
+                <span id="question-counter">Scroll 1 of 10</span>
+                <span id="exam-timer">⏳ The Trial Begins</span>
+            </header>
+
+            <div id="scenario-container" class="hidden">
+                <h3>📜 Case Study Fact Pattern:</h3>
+                <p id="scenario-text"></p>
+            </div>
+
+            <div class="question-container">
+                <h2 id="question-text">Loading incantation...</h2>
+                <div id="options-container" class="options-grid">
+                    </div>
+            </div>
+
+            <div id="feedback-container" class="hidden">
+                <h3 id="feedback-title">Result</h3>
+                <p id="feedback-text">Explanation goes here.</p>
+                <p class="auth-lit"><strong>Read the Ancient Scrolls:</strong> <span id="auth-lit-text"></span></p>
+            </div>
+
+            <div class="quiz-footer">
+                <button id="next-btn" class="primary-btn hidden">Next Scroll ➡️</button>
+            </div>
+        </main>
+
+        <main id="results-view" class="view-section hidden">
+            <div class="results-card">
+                <h1>Quest Complete!</h1>
+                <h2 id="final-score-display">0%</h2>
+                <p id="rank-update-message">You remain a Workpaper Elf.</p>
+                
+                <div class="results-actions">
+                    <button id="return-home-btn" class="secondary-btn">🏠 Return to Dashboard</button>
+                    <button id="retry-quest-btn" class="primary-btn">🔄 Face the Dragons Again</button>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+{
+  "examMetadata": {
+    "discipline": "Information Systems and Controls (ISC)",
+    "version": "1.0",
+    "lastUpdated": "2026-04-30",
+    "blueprintWeights": {
+      "Area I: Information Systems and Data Management": 0.40,
+      "Area II: Security, Confidentiality and Privacy": 0.40,
+      "Area III: Considerations for SOC Engagements": 0.20
+    }
+  },
+  "questions": [
+    {
+      "id": "ISC-III-3001",
+      "questionType": "MCQ",
+      "contentArea": "Area III: Considerations for SOC Engagements",
+      "topic": "SOC 1 vs SOC 2",
+      "cognitiveSkill": "Remembering and Understanding",
+      "difficulty": 1,
+      "scenario": null,
+      "question": "A client is requesting an assurance report to provide to their customers regarding the security and availability of their cloud-hosted SaaS application. Which report is most appropriate?",
+      "options": [
+        "SOC 1 Type 2",
+        "SOC 2 Type 2",
+        "SOC 3",
+        "SSAE 18 Section 320"
+      ],
+      "correctAnswer": [1],
+      "explanations": [
+        "🧟 Zombie control! A SOC 1 report is strictly for Internal Controls over Financial Reporting (ICFR). Customers want to know their data is safe, not how your accounting software works.",
+        "🪄 A flawless incantation! A SOC 2 Type 2 specifically addresses the Trust Services Criteria (Security, Availability, etc.) and gives customers the detailed testing results they need.",
+        "🧪 A weak potion! While a SOC 3 covers the same criteria as a SOC 2, it is just a high-level marketing summary and lacks the detailed testing matrix customers usually demand.",
+        "🦇 Dark magic! SSAE 18 is the overarching attestation standard governing the audit, not the specific report you hand to a customer."
+      ],
+      "authoritativeLiterature": "AICPA SOC 2 Guide"
+    },
+    {
+      "id": "ISC-I-1055",
+      "questionType": "MCQ",
+      "contentArea": "Area I: Information Systems and Data Management",
+      "topic": "System Development Life Cycle (SDLC)",
+      "cognitiveSkill": "Application",
+      "difficulty": 2,
+      "scenario": "A financial institution is deploying a major update to its mobile banking application.",
+      "question": "To maintain proper segregation of duties within the SDLC, which of the following actions should the lead developer be restricted from performing?",
+      "options": [
+        "Writing the source code for the new feature.",
+        "Conducting unit testing on the local development environment.",
+        "Migrating the compiled code into the live production environment.",
+        "Reviewing the code of junior developers."
+      ],
+      "correctAnswer": [2],
+      "explanations": [
+        "🧝‍♂️ Workpaper Elf mistake! Writing code is exactly what developers are paid to do.",
+        "🕸️ Tangled in the web! Developers should absolutely test their own code in a sandbox (unit testing) before sending it up the chain.",
+        "🛡️ The realm is secure! Developers must never have the keys to the production kingdom. Only a release manager or automated pipeline should push code to prevent unauthorized 'backdoor' spells.",
+        "🌩️ An illusion! Senior developers reviewing junior code is a key control in the SDLC, not a violation of segregation of duties."
+      ],
+      "authoritativeLiterature": "COBIT 2019 Framework: BAI06"
+    },
+    {
+      "id": "ISC-II-2088",
+      "questionType": "MSQ",
+      "contentArea": "Area II: Security, Confidentiality and Privacy",
+      "topic": "Incident Response",
+      "cognitiveSkill": "Analysis",
+      "difficulty": 3,
+      "scenario": "An IT auditor is reviewing an organization's Incident Response Plan (IRP) following a severe ransomware attack that encrypted the main database.",
+      "question": "Which of the following phases of the incident response lifecycle should have been executed immediately AFTER the ransomware was detected to prevent further lateral movement? (Select all that apply)",
+      "options": [
+        "Eradication",
+        "Containment",
+        "Preparation",
+        "Isolation of affected network segments"
+      ],
+      "correctAnswer": [1, 3],
+      "explanations": [
+        "🗡️ Swung too early! Eradication comes only AFTER containment. You don't try to pull the sword out of the dragon while it's still running around the castle.",
+        "🐉 Dragon Slayer! Containment traps the threat exactly where it is so it cannot spread.",
+        "🔮 Poor scrying! Preparation happens months before the attack ever begins (writing policies, training staff).",
+        "🐉 Dragon Slayer! Isolation (unplugging the server from the network) is a key containment strategy to stop the ransomware from finding new databases."
+      ],
+      "authoritativeLiterature": "NIST SP 800-61 Rev. 2"
+    },
+    {
+      "id": "ISC-I-1092",
+      "questionType": "MCQ",
+      "contentArea": "Area I: Information Systems and Data Management",
+      "topic": "Disaster Recovery Planning",
+      "cognitiveSkill": "Application",
+      "difficulty": 2,
+      "scenario": null,
+      "question": "Management has stated that the e-commerce platform cannot lose more than 4 hours of transactional data in the event of a catastrophic server failure. This metric defines the organization's:",
+      "options": [
+        "Recovery Time Objective (RTO)",
+        "Recovery Point Objective (RPO)",
+        "Maximum Tolerable Downtime (MTD)",
+        "Service Level Agreement (SLA)"
+      ],
+      "correctAnswer": [1],
+      "explanations": [
+        "⏳ Out of time! RTO measures how long it takes to bring the system back online, not how much data was lost.",
+        "🧙‍♂️ Grand Archmage knowledge! RPO (Recovery Point Objective) dictates the maximum acceptable data loss. You must restore to a 'point' no older than 4 hours.",
+        "💀 A fatal error! MTD is the absolute max time the business can survive without the system before going bankrupt.",
+        "📜 Wrong scroll! An SLA is a vendor contract guaranteeing uptime, not an internal disaster recovery metric."
+      ],
+      "authoritativeLiterature": "ISO/IEC 27031"
+    },
+    {
+      "id": "ISC-II-2104",
+      "questionType": "MCQ",
+      "contentArea": "Area II: Security, Confidentiality and Privacy",
+      "topic": "Cryptography",
+      "cognitiveSkill": "Remembering and Understanding",
+      "difficulty": 2,
+      "scenario": null,
+      "question": "Which of the following encryption methods uses a public key to encrypt data and a mathematically related private key to decrypt it?",
+      "options": [
+        "Symmetric Encryption",
+        "Hashing",
+        "Asymmetric Encryption",
+        "Steganography"
+      ],
+      "correctAnswer": [2],
+      "explanations": [
+        "🦇 Dark magic! Symmetric encryption uses the exact same key to both lock and unlock the chest.",
+        "🕸️ Tangled! Hashing is a one-way mathematical function to prove data hasn't been altered. It is not used for two-way encryption.",
+        "🔮 Clear vision! Asymmetric encryption uses a two-key pair (Public/Private) to secure communications securely across the realm.",
+        "🖼️ An illusion! Steganography is the art of hiding a secret message inside another file, like a picture or an audio track."
+      ],
+      "authoritativeLiterature": "FIPS 140-3"
+    },
+    {
+      "id": "ISC-III-3022",
+      "questionType": "MCQ",
+      "contentArea": "Area III: Considerations for SOC Engagements",
+      "topic": "Trust Services Criteria",
+      "cognitiveSkill": "Application",
+      "difficulty": 2,
+      "scenario": "A payroll processing company is undergoing a SOC 2 examination. A control requires that all employee data is encrypted in transit and at rest.",
+      "question": "Which of the Trust Services Criteria is this control primarily designed to satisfy?",
+      "options": [
+        "Security",
+        "Availability",
+        "Processing Integrity",
+        "Confidentiality"
+      ],
+      "correctAnswer": [3],
+      "explanations": [
+        "🛡️ Missed the mark! While Security is the foundation, this control is too specific. Security relates to overarching protection against unauthorized access.",
+        "🌩️ Server offline! Availability ensures the system is actually up and running for users to log into.",
+        "🧮 Math error! Processing Integrity ensures payroll is calculated correctly and exactly, without errors.",
+        "📜 The Ancient Scrolls confirm! Confidentiality specifically applies to protecting sensitive information (like payroll data) from unauthorized disclosure, usually via encryption."
+      ],
+      "authoritativeLiterature": "AICPA Trust Services Criteria (CC6.1 & C1.1)"
+    },
+    {
+      "id": "ISC-II-2140",
+      "questionType": "MSQ",
+      "contentArea": "Area II: Security, Confidentiality and Privacy",
+      "topic": "Access Controls",
+      "cognitiveSkill": "Analysis",
+      "difficulty": 3,
+      "scenario": "An employee was recently terminated, but logs show their account was used to access the CRM system three days after their departure.",
+      "question": "Which of the following controls, if operating effectively, would have prevented this unauthorized access? (Select all that apply)",
+      "options": [
+        "Automated offboarding scripts linked to HR systems",
+        "Annual user access reviews",
+        "Time-of-day login restrictions",
+        "Disabling accounts immediately upon termination notification"
+      ],
+      "correctAnswer": [0, 3],
+      "explanations": [
+        "🗡️ A swift strike! If the HR system automatically told the IT system to kill the account the second the employee was fired, the breach wouldn't have happened.",
+        "🧟 Too slow! Annual reviews are detective controls that happen way too late. You'd find out about the breach 11 months from now.",
+        "🕰️ Not quite! Time-of-day restrictions just mean the fired employee would have had to log in during normal business hours to steal the data.",
+        "🗡️ A swift strike! A manual but immediate process to kill access upon receiving the termination notice prevents post-employment access."
+      ],
+      "authoritativeLiterature": "NIST SP 800-53 (AC-2)"
+    },
+    {
+      "id": "ISC-I-1077",
+      "questionType": "MCQ",
+      "contentArea": "Area I: Information Systems and Data Management",
+      "topic": "Database Architecture",
+      "cognitiveSkill": "Remembering and Understanding",
+      "difficulty": 1,
+      "scenario": null,
+      "question": "In a relational database, which of the following is used to uniquely identify each record in a table?",
+      "options": [
+        "Foreign Key",
+        "Primary Key",
+        "Schema",
+        "Data Dictionary"
+      ],
+      "correctAnswer": [1],
+      "explanations": [
+        "🔗 A broken link! A Foreign Key is a field in one table that uniquely identifies a row of another table. It's for creating relationships.",
+        "🦄 Pure magic! The Primary Key is the unique identifier for a row (like an Employee ID or SSN), ensuring no duplicate records exist in the realm.",
+        "🏛️ Too big! The Schema is the overarching architectural blueprint of the entire database structure.",
+        "📖 Just a book! A Data Dictionary is essentially a glossary defining what the data means, its format, and its constraints."
+      ],
+      "authoritativeLiterature": "COBIT 2019 Framework"
+    },
+    {
+      "id": "ISC-II-2199",
+      "questionType": "MCQ",
+      "contentArea": "Area II: Security, Confidentiality and Privacy",
+      "topic": "Vulnerability Management",
+      "cognitiveSkill": "Analysis",
+      "difficulty": 3,
+      "scenario": "A firm wants to assess its network security. They hire an external team to actively attempt to exploit vulnerabilities, bypass firewalls, and gain unauthorized access to test systems.",
+      "question": "This activity is best described as:",
+      "options": [
+        "Vulnerability Scanning",
+        "Risk Assessment",
+        "Penetration Testing",
+        "Social Engineering"
+      ],
+      "correctAnswer": [2],
+      "explanations": [
+        "🤖 Just a robot! Vulnerability scanning is an automated tool that flags missing patches, but it doesn't actually try to break in and exploit them.",
+        "📝 Paperwork! A Risk Assessment is a management exercise to identify risks and map them to business impact.",
+        "🗡️ Hired Rogues! Penetration testing involves human experts actively exploiting weaknesses to see how deep they can infiltrate the fortress.",
+        "🗣️ Silver tongue! Social Engineering focuses on tricking humans (phishing, tailgating) rather than technically bypassing network firewalls."
+      ],
+      "authoritativeLiterature": "NIST SP 800-115"
+    },
+    {
+      "id": "ISC-III-3050",
+      "questionType": "MCQ",
+      "contentArea": "Area III: Considerations for SOC Engagements",
+      "topic": "Complementary User Entity Controls (CUECs)",
+      "cognitiveSkill": "Application",
+      "difficulty": 2,
+      "scenario": "A service organization provides a cloud-based general ledger system. Their SOC 1 report states that logical access to the application is secure.",
+      "question": "However, the report includes a CUEC stating that user entities must provision and de-provision their own employee accounts. If a user entity fails to perform this CUEC, what is the likely impact on the user entity's financial audit?",
+      "options": [
+        "The service organization's auditor will issue a qualified SOC 1 opinion.",
+        "The user entity cannot fully rely on the service organization's logical access controls.",
+        "The service organization must revoke the user entity's access.",
+        "There is no impact, as the SOC 1 report covers the service organization's controls."
+      ],
+      "correctAnswer": [1],
+      "explanations": [
+        "🧟 Zombie logic! The service auditor issues their opinion based on the vendor's controls. They don't care if one specific client drops the ball internally.",
+        "⚖️ The PCAOB nods! A CUEC is a shared responsibility. If the client fails to manage their own users, they cannot rely on the vendor's SOC report to save their own audit.",
+        "🚫 Too harsh! The vendor isn't going to cut off a paying client just because the client has messy internal IT controls.",
+        "🙈 Blind spot! There is a massive impact. Without performing the CUEC, the client's auditor cannot rely on the SOC report, which will likely result in a deficiency for the client."
+      ],
+      "authoritativeLiterature": "AICPA SOC 1 Guide"
+    }
+  ]
+}
