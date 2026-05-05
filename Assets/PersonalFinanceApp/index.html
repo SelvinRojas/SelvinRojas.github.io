@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>True Net Worth & Point Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Finance & Points Tracker</h1>
+  </header>
+
+  <main class="container">
+    <section class="card dashboard">
+      <h2>True Net Worth</h2>
+      <h1 id="net-worth-display">$0.00</h1>
+      <div class="summary">
+        <div>Total Assets: <span id="assets-display" class="positive">$0.00</span></div>
+        <div>Total Liabilities: <span id="liabilities-display" class="negative">$0.00</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Manage Credit Card Lineup</h3>
+      <p class="subtitle">Add cards to your wallet to track balances and optimize points.</p>
+      <div class="flex-form">
+        <select id="available-cards-dropdown">
+          </select>
+        <button id="add-card-btn" class="btn">Add to Wallet</button>
+      </div>
+    </section>
+
+    <div class="grid-2">
+      <section class="card">
+        <h3>Update Balances</h3>
+        <form id="balance-form">
+          <label>Debit / Checking Balance ($)</label>
+          <input type="number" id="debit-input" step="0.01">
+          
+          <label>Savings Balance ($)</label>
+          <input type="number" id="savings-input" step="0.01">
+          
+          <h4>Credit Card Balances</h4>
+          <div id="cc-inputs-container">
+            <p class="empty-state">No credit cards in wallet. Add some above!</p>
+          </div>
+          
+          <button type="submit" class="btn">Save Balances</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h3>Log Purchase & Track Points</h3>
+        <form id="transaction-form">
+          <label>Purchase Name</label>
+          <input type="text" id="txn-name" required placeholder="e.g., Groceries at Trader Joe's">
+          
+          <label>Amount ($)</label>
+          <input type="number" id="txn-amount" step="0.01" required>
+
+          <label>Category</label>
+          <select id="txn-category">
+            <option value="Dining">Dining</option>
+            <option value="Groceries">Groceries</option>
+            <option value="Travel">Travel</option>
+            <option value="Gas">Gas</option>
+            <option value="Other">Other</option>
+          </select>
+          
+          <label>Payment Method Used</label>
+          <select id="txn-method">
+            </select>
+
+          <label>Points Earned (Multiplier / Total)</label>
+          <input type="text" id="txn-points" placeholder="e.g., 4x or 200 pts">
+
+          <label>Was this the optimal card?</label>
+          <select id="txn-optimal">
+            <option value="Yes">Yes ✅</option>
+            <option value="No">No ❌</option>
+          </select>
+
+          <button type="submit" class="btn">Log Purchase</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="card">
+      <h3>Recent Purchases & Point Efficiency</h3>
+      <table id="transaction-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Category</th>
+            <th>Points</th>
+            <th>Optimal?</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="transaction-list">
+          </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
