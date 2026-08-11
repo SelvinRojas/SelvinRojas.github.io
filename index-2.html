@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selvin Rojas | Professional Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --marble-white: #fdfdfd;
+            --soft-slate: #4a5568;
+            --champagne: #c5a358;
+            --stone-grey: #f4f4f2;
+            --text-main: #2d3436;
+            --transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--marble-white);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            letter-spacing: 0.02em;
+        }
+
+        /* --- Elegant Animations --- */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(1.02); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .reveal {
+            animation: fadeInScale 1.4s var(--transition) forwards;
+            opacity: 0;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, #fcfcfc, #f4f4f2);
+            padding: 0 10%;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--champagne);
+            margin-bottom: 40px;
+        }
+
+        /* --- Main Content Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 40px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 450px 1fr;
+            gap: 100px;
+        }
+
+        /* --- Sidebar / Profile --- */
+        .profile-side {
+            position: sticky;
+            top: 50px;
+            height: fit-content;
+        }
+
+        .image-frame {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: var(--stone-grey);
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.03);
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(10%) contrast(1.05);
+        }
+
+        /* --- Resume Cards --- */
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--champagne);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .content-block {
+            margin-bottom: 80px;
+        }
+
+        .entry {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .entry h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .entry .sub {
+            font-size: 0.9rem;
+            color: var(--soft-slate);
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .entry p, .entry li {
+            font-size: 0.95rem;
+            color: var(--soft-slate);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .app-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--champagne);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .app-link:hover {
+            border-bottom: 1px solid var(--champagne);
+        }
+
+        /* --- Skill Pills --- */
+        .skill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+            color: var(--soft-slate);
+            background: transparent;
+            border-radius: 2px;
+        }
+
+        /* --- Footer / Contact --- */
+        .contact-footer {
+            background: var(--stone-grey);
+            padding: 100px 60px;
+            text-align: center;
+        }
+
+        .btn-luxe {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--text-main);
+            text-decoration: none;
+            color: var(--text-main);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: var(--transition);
+        }
+
+        .btn-luxe:hover {
+            background: var(--text-main);
+            color: white;
+        }
+
+        @media (max-width: 900px) {
+            .grid-layout { grid-template-columns: 1fr; }
+            .profile-side { position: static; }
+            nav { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">S.R.</div>
+        <div style="font-size: 0.7rem; letter-spacing: 2px;">EST. 2005</div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content reveal">
+            <p>Finance & Software Engineering</p>
+            <h1>Selvin Rojas</h1>
+            <div style="width: 50px; height: 1px; background: var(--champagne); margin: 30px auto;"></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid-layout">
+            
+            <aside class="profile-side reveal">
+                <div class="image-frame">
+                    <img src="Assets/ProfilePic.jpg" alt="Selvin Rojas">
+                </div>
+                <span class="section-label">Location</span>
+                <p style="font-size: 0.9rem; margin-bottom: 30px;">Piscataway, New Jersey</p>
+                
+                <span class="section-label">Certifications</span>
+                <p style="font-size: 0.9rem; margin-bottom: 5px; font-weight: 600;">NOCTI Workforce Credential</p>
+                <p style="font-size: 0.8rem; color: var(--soft-slate);">Computer Science Specialization</p>
+            </aside>
+
+            <main class="reveal">
+                
+                <section class="content-block">
+                    <span class="section-label">Academic Foundations</span>
+                    <div class="entry">
+                        <h3>Rutgers Business School</h3>
+                        <div class="sub">Bachelor of Science in Finance | Expected May 2027</div>
+                        <p>Currently engaged with the Scholars of Finance and the Personal Finance Club, developing a deep understanding of market mechanics and fiscal strategy.</p>
+                    </div>
+                    <div class="entry">
+                        <h3>Atlantic County Institute of Technology</h3>
+                        <div class="sub">Computer Science Focus | Class of 2023</div>
+                        <p>Built a technical foundation through a rigorous CS curriculum, highlighted by a cross-departmental project developing remote-controlled bioluminescent systems.</p>
+                    </div>
+                </section>
+
+                <section class="content-block">
+                    <span class="section-label">Professional Experience</span>
+                    
+                    <div class="entry">
+                        <h3>Lead Light Engineer</h3>
+                        <div class="sub">AC3 Professional Entertainment | 2021 — 2024</div>
+                        <ul style="list-style: none;">
+                            <li>• Orchestrated complex automated sequences to streamline technical production.</li>
+                            <li>• Directed on-site staff to ensure assembly met high-end customer expectations.</li>
+                            <li>• Facilitated software competency training for technical teams.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <h3>Operational Specialist</h3>
+                        <div class="sub">Maurizio’s Italian Grill | 2023 — Present</div>
+                        <ul style="list-style: none;">
+                            <li>• Managing high-volume daily operations, overseeing 400+ precise transactions.</li>
+                            <li>• Optimized logistical routing and communication protocols to improve efficiency.</li>
+                            <li>• Praised for maintaining performance standards under high-pressure environmental conditions.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-block">
+                    <span class="section-label">Projects & Applications</span>
+                    
+                    <div class="entry">
+                        <h3>Personal Finance & Points Tracker</h3>
+                        <div class="sub">Dynamic Front-End Web Application</div>
+                        <p>Developed a fully responsive web application utilizing HTML, CSS, and Vanilla JavaScript with localStorage. Features include dynamic credit card lineup management, automated net worth calculation, and granular tracking of transaction reward point efficiency.</p>
+                        <a href="Assets/PersonalFinanceApp/index.html" class="app-link" target="_blank">LAUNCH APPLICATION &rarr;</a>
+                    </div>
+
+                    <div class="entry">
+                        <h3>HSK Mandarin Vocab & Quiz App</h3>
+                        <div class="sub">Language Learning Web Application</div>
+                        <p>Built a purpose-driven study tool to support Mandarin acquisition, featuring HSK vocabulary review and interactive quizzing designed to reinforce habit formation and retention.</p>
+                        <a href="https://selvinrojas.github.io/HSK/" class="app-link" target="_blank">LAUNCH APPLICATION &rarr;</a>
+                    </div>
+                </section>
+
+                <section class="content-block">
+                    <span class="section-label">Technical Proficiency</span>
+                    <div class="skill-container">
+                        <span class="skill-tag">Java Development</span>
+                        <span class="skill-tag">Python Programming</span>
+                        <span class="skill-tag">Advanced Microsoft Excel</span>
+                        <span class="skill-tag">Bilingual (English / Spanish)</span>
+                        <span class="skill-tag">Automated Systems</span>
+                        <span class="skill-tag">Data Management</span>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="contact-footer reveal">
+        <span class="section-label" style="margin-bottom: 40px;">Let's Connect</span>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; margin-bottom: 50px;">
+            selvin.rojas@rutgers.edu
+        </h2>
+        <a href="https://www.linkedin.com/in/selvinrojas/" class="btn-luxe">View LinkedIn Profile</a>
+        <p style="font-size: 0.7rem; color: var(--soft-slate); margin-top: 80px; letter-spacing: 2px;">
+            © 2026 SELVIN ROJAS // ARCHITECTED FOR SUCCESS
+        </p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    entry.target.style.opacity = 1;
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
